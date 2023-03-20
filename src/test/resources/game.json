@@ -1,0 +1,16 @@
+{
+
+		"name": "The last of us",
+		"developer": "Naughty Dog",
+		"genre": "action-adventure",
+		"date": "10.12.2011",
+		"writer": "Neil Druckmann",
+		"theBast": true,
+		"score": 10,
+		"platforms": [
+			"PS3",
+			"PS4",
+			"PS5"
+		]
+
+}
