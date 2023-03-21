@@ -9,6 +9,13 @@ repositories {
     mavenCentral()
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     testImplementation 'com.fasterxml.jackson.core:jackson-core:2.13.1'
     testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'

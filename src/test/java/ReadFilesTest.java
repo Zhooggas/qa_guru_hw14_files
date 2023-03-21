@@ -17,7 +17,7 @@ public class ReadFilesTest {
     private ClassLoader classLoader = ReadFilesTest.class.getClassLoader();
 
     @Test
-    @Description("Проверка столбцов в excel файле графика отпусков")
+    @Description("РџСЂРѕРІРµСЂРєР° РїРѕР»РµР№ excel С„Р°Р№Р»Р° РїРѕСЃР»Рµ РІС‹С‡РёС‚РєРё РёР· Р°СЂС…РёРІР°")
     void readExcelFromZipTest() throws Exception {
         try (InputStream files = classLoader.getResourceAsStream("files.zip");
              ZipInputStream zs = new ZipInputStream(files)) {
@@ -25,14 +25,13 @@ public class ReadFilesTest {
             while ((entry = zs.getNextEntry()) != null) {
                 if (entry.getName().equals("graph.xls")) {
                     XLS xls = new XLS(zs);
-                    System.out.println("");
                     Assertions.assertTrue(
                             xls.excel.getSheetAt(0).getRow(14).getCell(0).getStringCellValue()
-                                        .startsWith("Структурное подразделение") &&
+                                        .startsWith("РЎС‚СЂСѓРєС‚СѓСЂРЅРѕРµ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ") &&
                                     xls.excel.getSheetAt(0).getRow(14).getCell(20).getStringCellValue()
-                                        .startsWith("Должность (специальность, профессия)") &&
+                                        .startsWith("Р”РѕР»Р¶РЅРѕСЃС‚СЊ (СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ, РїСЂРѕС„РµСЃСЃРёСЏ)") &&
                                     xls.excel.getSheetAt(0).getRow(14).getCell(40).getStringCellValue()
-                                        .startsWith("Фамилия, имя, отчество")
+                                        .startsWith("Р¤Р°РјРёР»РёСЏ, РёРјСЏ, РѕС‚С‡РµСЃС‚РІРѕ")
                     );
                 }
             }
@@ -40,7 +39,7 @@ public class ReadFilesTest {
     }
 
     @Test
-    @Description("Проверка первой строки списка городов в CSV файле")
+    @Description("РџСЂРѕРІРµСЂРєР° РїРµСЂРІРѕР№ СЃС‚СЂРѕРєРё С„Р°Р№Р»Р° CSV РїРѕСЃР»Рµ РІС‹С‡РёС‚РєРё РёР· Р°СЂС…РёРІР°")
     void readCsvFromZip()throws Exception {
         try (InputStream files = classLoader.getResourceAsStream("files.zip");
              ZipInputStream zs = new ZipInputStream(files)) {
@@ -56,7 +55,7 @@ public class ReadFilesTest {
     }
 
     @Test
-    @Description("Проверка значения поля creator pdf файле")
+    @Description("РџСЂРѕРІРµСЂРєР° Р·РЅР°С‡РµРЅРёСЏ РїРѕР»СЏ creator pdf С„Р°Р№Р»Р° РїРѕСЃР»Рµ РІС‹С‡РёС‚РєРё РёР· Р°СЂС…РёРІР°")
     @Tag("PDF")
     void readTitleInPdfFromZip() throws Exception{
         try (InputStream files = classLoader.getResourceAsStream("files.zip");
@@ -65,7 +64,6 @@ public class ReadFilesTest {
             while ((entry = zs.getNextEntry()) != null) {
                 if (entry.getName().equals("sample.pdf")) {
                     PDF pdf = new PDF(zs);
-                    System.out.println("");
                     Assertions.assertEquals("Rave (http://www.nevrona.com/rave)", pdf.creator);
                 }
             }
